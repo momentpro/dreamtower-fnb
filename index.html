@@ -6,18 +6,22 @@
     <title>제주 드림타워 F&B 캠페인 인터랙티브 가이드</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Jeju Harmony -->
+    <!-- Application Structure Plan: 사용자인 인플루언서가 두 가지 캠페인('블루 드래곤', '카페 8')의 핵심 정보를 명확히 구분하고 각 미션을 쉽게 이해할 수 있도록 탭 기반의 대시보드 구조를 채택했습니다. 메인 화면에서 두 캠페인을 선택하면 해당 상세 정보 섹션으로 부드럽게 스크롤되어 사용자가 필요한 정보에 빠르게 접근할 수 있습니다. 각 섹션은 '핵심 메시지', '콘텐츠 제작 가이드', '제공 혜택'으로 명확히 구분하여 정보의 혼선을 최소화하고, 사용자가 자신의 역할을 직관적으로 파악하도록 설계했습니다. 이러한 구조는 복잡한 가이드라인을 단순하고 따라하기 쉬운 작업 흐름으로 전환하여 사용자 편의성을 극대화합니다. -->
+    <!-- Visualization & Content Choices: 보고서의 정보는 정성적이므로 전통적인 차트 대신, 정보를 명확하게 전달하고 사용자 참여를 유도하는 데 중점을 뒀습니다. '핵심 메시지'는 아이콘과 결합된 카드 형태로 시각적 이해를 돕고(Goal: Inform), '콘텐츠 제작 가이드'는 사용자가 클릭하며 완료 여부를 표시할 수 있는 인터랙티브 체크리스트로 구현했습니다(Goal: Organize, Interaction: Click to toggle style). '필수 키워드'는 클릭 시 확장/축소되는 토글(Interaction: Click to show/hide)을 사용하여 초기 화면을 간결하게 유지했습니다. 이러한 방식은 Chart.js나 Plotly.js 없이 HTML, CSS, 바닐라 JS만으로 효과적인 정보 구성과 상호작용을 구현합니다. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Noto Sans KR', sans-serif;
         }
         .active-tab {
-            border-color: #0369a1;
-            color: #0369a1;
+            border-color: #0369a1; /* sky-700 */
+            color: #0369a1; /* sky-700 */
             font-weight: 700;
         }
         .inactive-tab {
             border-color: transparent;
-            color: #4b5563;
+            color: #4b5563; /* gray-600 */
         }
         .content-section {
             transition: all 0.5s ease-in-out;
@@ -25,6 +29,245 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
-<!-- 생략 없이 전체 HTML 복사 -->
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-4xl">
+
+        <header class="text-center mb-8">
+            <h1 class="text-3xl sm:text-4xl font-bold text-sky-800">제주 드림타워 F&B 캠페인</h1>
+            <p class="text-slate-600 mt-2">인플루언서 콘텐츠 제작 인터랙티브 가이드</p>
+        </header>
+
+        <div class="bg-white p-6 rounded-2xl shadow-lg mb-8">
+            <h2 class="text-xl font-bold mb-4 text-slate-700">캠페인 소개</h2>
+            <p class="text-slate-600">
+                안녕하세요! 제주 드림타워 그랜드 하얏트 제주에서 새롭게 선보이는 '블루 드래곤'과 '카페 8'의 F&B 캠페인에 참여해주셔서 감사합니다. 본 가이드는 인플루언서 여러분께서 체험하실 **두 곳의 미션**에 대한 콘텐츠 제작을 돕기 위해 제작되었습니다. 아래 탭을 통해 각 매장별 상세 미션을 확인하고 콘텐츠를 제작해주세요.
+            </p>
+        </div>
+
+        <nav class="flex justify-center border-b border-slate-200 mb-8">
+            <button id="tab-blue-dragon" class="flex-1 py-3 px-2 text-center border-b-2 transition-all duration-300 active-tab">🐲 블루 드래곤</button>
+            <button id="tab-cafe-8" class="flex-1 py-3 px-2 text-center border-b-2 transition-all duration-300 inactive-tab">☕️ 카페 8</button>
+        </nav>
+
+        <main>
+            <section id="content-blue-dragon" class="content-section">
+                <div class="bg-white p-6 rounded-2xl shadow-lg space-y-8">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1 text-sky-700">Mission: 블루 드래곤 (Blue Dragon)</h2>
+                        <p class="text-slate-500 mb-6">제주 최고층에서 만나는 뉴 상하이 퀴진</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold border-l-4 border-sky-600 pl-3 mb-4">📢 핵심 메시지</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-sky-50 p-4 rounded-lg">
+                                <p class="font-bold text-sky-800">📍 위치 & 상징성</p>
+                                <p class="text-sm text-slate-600 mt-1">제주 최고층 38층의 환상적인 시티뷰와 함께 즐기는 상하이 전문 요리</p>
+                            </div>
+                             <div class="bg-sky-50 p-4 rounded-lg">
+                                <p class="font-bold text-sky-800">🍜 중국 4대 요리</p>
+                                <p class="text-sm text-slate-600 mt-1">드림타워 내 베이징, 광둥, 쓰촨에 이어 상하이 요리까지! 중국 4대 요리 라인업 완성</p>
+                            </div>
+                            <div class="bg-sky-50 p-4 rounded-lg">
+                                <p class="font-bold text-sky-800">🌿 메뉴 컨셉</p>
+                                <p class="text-sm text-slate-600 mt-1">제주 흑돼지, 해산물 등 최상급 식재료를 활용한 '뉴 상하이 요리'</p>
+                            </div>
+                            <div class="bg-sky-50 p-4 rounded-lg">
+                                <p class="font-bold text-sky-800">👨‍🍳 총괄 셰프</p>
+                                <p class="text-sm text-slate-600 mt-1">17년 경력의 베테랑, '우원' 셰프가 선보이는 정통과 현대의 조화</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold border-l-4 border-sky-600 pl-3 mb-4">📋 콘텐츠 제작 가이드</h3>
+                        <ul class="space-y-3">
+                            <li class="checklist-item flex items-center cursor-pointer">
+                                <span class="check-icon w-5 h-5 mr-3 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all"></span>
+                                <span class="item-text">제목에 필수 키워드 5개 포함</span>
+                                <button class="toggle-keywords ml-auto bg-slate-200 text-slate-600 text-xs px-2 py-1 rounded-full">보기</button>
+                            </li>
+                            <li class="keyword-list hidden ml-8 mt-2 p-3 bg-slate-100 rounded-lg text-sm text-slate-600">
+                                #제주드림타워 #그랜드하얏트제주 #블루드래곤 #드림타워중식 #제주신상맛집
+                            </li>
+                            <li class="checklist-item flex items-center cursor-pointer">
+                                <span class="check-icon w-5 h-5 mr-3 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all"></span>
+                                <span class="item-text">📸 사진 10장 이상 업로드 (음식, 인테리어, 뷰)</span>
+                            </li>
+                            <li class="checklist-item flex items-center cursor-pointer">
+                                <span class="check-icon w-5 h-5 mr-3 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all"></span>
+                                <span class="item-text">🎬 10초 내외 숏폼 영상 1개 제작 (릴스/쇼츠)</span>
+                            </li>
+                            <li class="checklist-item flex items-center cursor-pointer">
+                                <span class="check-icon w-5 h-5 mr-3 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all"></span>
+                                <span class="item-text">🗓️ 방문 후 2주 내 포스팅 1회 완료</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold border-l-4 border-sky-600 pl-3 mb-4">📰 참고 기사</h3>
+                        <div class="space-y-2">
+                            <a href="https://n.news.naver.com/mnews/article/009/0005512713?sid=103" target="_blank" rel="noopener noreferrer" class="flex items-center text-sky-700 hover:underline">
+                                <span class="mr-2">🔗</span> 오픈 5년째 하얏트 호텔… 중식 마스터가 제주 택한 이유
+                            </a>
+                            <a href="https://n.news.naver.com/mnews/article/008/0005191069?sid=103" target="_blank" rel="noopener noreferrer" class="flex items-center text-sky-700 hover:underline">
+                                <span class="mr-2">🔗</span> 제주 드림타워, 38층에 상하이 요리전문 '블루 드래곤' 오픈
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold border-l-4 border-sky-600 pl-3 mb-4">🎁 제공 혜택</h3>
+                         <div class="bg-sky-100 border border-sky-200 text-sky-800 p-4 rounded-lg flex items-center">
+                            <span class="text-2xl mr-4">🍽️</span>
+                            <div>
+                                <p class="font-bold">'블루 드래곤' 세트 메뉴 2인 제공</p>
+                                <p class="text-sm">(1인 99,000원 상당, 총 198,000원 혜택)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="content-cafe-8" class="content-section hidden">
+                 <div class="bg-white p-6 rounded-2xl shadow-lg space-y-8">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-1 text-amber-700">Mission: 카페 8 (Cafe 8)</h2>
+                        <p class="text-slate-500 mb-6">파노라믹 풀데크 뷰와 함께 즐기는 미식 경험</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold border-l-4 border-amber-600 pl-3 mb-4">📢 핵심 메시지</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <p class="font-bold text-amber-800">👨‍🍳 셰프 & 리뉴얼</p>
+                                <p class="text-sm text-slate-600 mt-1">미쉐린 1스타 레스토랑 출신, '버튼 이' 셰프가 새롭게 단장한 공간</p>
+                            </div>
+                             <div class="bg-amber-50 p-4 rounded-lg">
+                                <p class="font-bold text-amber-800">🏞️ 뷰 & 분위기</p>
+                                <p class="text-sm text-slate-600 mt-1">8m 통유리창 너머 펼쳐지는 국내 최대 야외 풀데크의 파노라믹 뷰</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <p class="font-bold text-amber-800">🏊‍♀️ 공간 활용</p>
+                                <p class="text-sm text-slate-600 mt-1">수영 후 8층에서 바로 즐기는 편리한 동선, 완벽한 휴식 코스</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg">
+                                <p class="font-bold text-amber-800">☕️ 시그니처 메뉴</p>
+                                <p class="text-sm text-slate-600 mt-1">제주를 모티브로 한 '드림라떼' & '일출라떼' 필수 체험</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold border-l-4 border-amber-600 pl-3 mb-4">📋 콘텐츠 제작 가이드</h3>
+                        <ul class="space-y-3">
+                            <li class="checklist-item flex items-center cursor-pointer">
+                                <span class="check-icon w-5 h-5 mr-3 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all"></span>
+                                <span class="item-text">제목에 필수 키워드 5개 포함</span>
+                                <button class="toggle-keywords ml-auto bg-slate-200 text-slate-600 text-xs px-2 py-1 rounded-full">보기</button>
+                            </li>
+                            <li class="keyword-list hidden ml-8 mt-2 p-3 bg-slate-100 rounded-lg text-sm text-slate-600">
+                                #제주드림타워 #그랜드하얏트제주 #카페8 #드림타워카페 #제주풀데크카페
+                            </li>
+                            <li class="checklist-item flex items-center cursor-pointer">
+                                <span class="check-icon w-5 h-5 mr-3 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all"></span>
+                                <span class="item-text">📸 사진 10장 이상 업로드 (음료, 음식, 뷰)</span>
+                            </li>
+                             <li class="checklist-item flex items-center cursor-pointer">
+                                <span class="check-icon w-5 h-5 mr-3 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all"></span>
+                                <span class="item-text">🎬 10초 내외 숏폼 영상 1개 제작 (릴스/쇼츠)</span>
+                            </li>
+                            <li class="checklist-item flex items-center cursor-pointer">
+                                <span class="check-icon w-5 h-5 mr-3 rounded-full border-2 border-slate-300 flex items-center justify-center transition-all"></span>
+                                <span class="item-text">🗓️ 방문 후 2주 내 포스팅 1회 완료</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold border-l-4 border-amber-600 pl-3 mb-4">📰 참고 기사</h3>
+                        <div class="space-y-2">
+                            <a href="https://digitalchosun.dizzo.com/site/data/html_dir/2025/03/10/2025031080046.html" target="_blank" rel="noopener noreferrer" class="flex items-center text-amber-700 hover:underline">
+                                <span class="mr-2">🔗</span> 롯데관광개발, '카페 8' 미쉐린 스타셰프와 고급 다이닝으로 변신
+                            </a>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold border-l-4 border-amber-600 pl-3 mb-4">🎁 제공 혜택</h3>
+                         <div class="bg-amber-100 border border-amber-200 text-amber-800 p-4 rounded-lg flex items-center">
+                            <span class="text-2xl mr-4">💳</span>
+                            <div>
+                                <p class="font-bold">'카페 8' 10만 원 이용권 제공</p>
+                                <p class="text-sm">('드림라떼', '일출라떼' 필수 주문 / 초과분 고객 부담)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12">
+            <p class="text-sm text-slate-500">&copy; 2025 Grand Hyatt Jeju. All Rights Reserved.</p>
+            <p class="text-xs text-slate-400 mt-1">본 가이드는 캠페인 참여 인플루언서를 위해 제작되었습니다.</p>
+        </footer>
+    </div>
+
+    <script>
+        const tabBlueDragon = document.getElementById('tab-blue-dragon');
+        const tabCafe8 = document.getElementById('tab-cafe-8');
+        const contentBlueDragon = document.getElementById('content-blue-dragon');
+        const contentCafe8 = document.getElementById('content-cafe-8');
+        const checklists = document.querySelectorAll('.checklist-item');
+        const keywordToggles = document.querySelectorAll('.toggle-keywords');
+
+        function switchTab(activeTab, inactiveTab, activeContent, inactiveContent) {
+            activeTab.classList.remove('inactive-tab');
+            activeTab.classList.add('active-tab');
+            inactiveTab.classList.remove('active-tab');
+            inactiveTab.classList.add('inactive-tab');
+
+            activeContent.classList.remove('hidden');
+            inactiveContent.classList.add('hidden');
+        }
+
+        tabBlueDragon.addEventListener('click', () => {
+            switchTab(tabBlueDragon, tabCafe8, contentBlueDragon, contentCafe8);
+        });
+
+        tabCafe8.addEventListener('click', () => {
+            switchTab(tabCafe8, tabBlueDragon, contentCafe8, contentBlueDragon);
+        });
+
+        checklists.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (e.target.tagName === 'BUTTON') return;
+
+                const checkIcon = item.querySelector('.check-icon');
+                const itemText = item.querySelector('.item-text');
+                const isChecked = checkIcon.classList.toggle('bg-sky-600');
+                checkIcon.classList.toggle('border-slate-300');
+                checkIcon.classList.toggle('border-sky-600');
+                itemText.classList.toggle('line-through');
+                itemText.classList.toggle('text-slate-400');
+                
+                if (isChecked) {
+                    checkIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>';
+                } else {
+                    checkIcon.innerHTML = '';
+                }
+            });
+        });
+
+        keywordToggles.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const keywordList = button.parentElement.nextElementSibling;
+                const isHidden = keywordList.classList.toggle('hidden');
+                button.textContent = isHidden ? '보기' : '숨기기';
+            });
+        });
+    </script>
 </body>
 </html>
